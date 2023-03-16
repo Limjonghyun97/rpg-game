@@ -3,21 +3,21 @@ package day04_rpg;
 import java.util.ArrayList;
 
 public class Player {
-	static int money;
-	static Guild guild = new Guild();
-	static Inventory inven = new Inventory();
+	public static int money;
+	public static Guild guild = new Guild();
+	public static Inventory inven = new Inventory();
 
-	Player() {
-		money = 100000;
-		guild.setGuild();
+	public Player() {
+		this.money = 100000;
+		this.guild.setGuild();
 	}
 
 	public void guildMenu() {
-		guild.guildMenu();
+		this.guild.guildMenu();
 	}
 
 	public void inventoryMenu() {
-		inven.inventoryMenu();
+		this.inven.inventoryMenu();
 	}
 
 	static public ArrayList<Unit> getGuildList() {

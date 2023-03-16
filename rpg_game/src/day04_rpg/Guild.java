@@ -3,38 +3,38 @@ package day04_rpg;
 import java.util.ArrayList;
 
 public class Guild {
-	final int PARTY_SIZE = 4;
-	ArrayList<Unit> guildList = new ArrayList<>();
-	Unit[] partyList;
+	public final int PARTY_SIZE = 4;
+	public ArrayList<Unit> guildList = new ArrayList<>();
+	public Unit[] partyList;
 
 	public void setGuild() {
 		Unit temp = new Unit("호랑이", 1, 100, 10, 5, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		temp = new Unit("강아지", 1, 80, 7, 3, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		temp = new Unit("사슴", 1, 50, 3, 1, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		temp = new Unit("두더지", 1, 70, 5, 2, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		temp = new Unit("돼지", 1, 200, 4, 8, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		temp = new Unit("사자", 1, 120, 11, 7, 0);
-		guildList.add(temp);
+		this.guildList.add(temp);
 		for (int i = 0; i < 4; i++) {
-			guildList.get(i).party = true;
+			this.guildList.get(i).setParty(true);
 		}
-		partyList = new Unit[PARTY_SIZE];
+		this.partyList = new Unit[this.PARTY_SIZE];
 		int n = 0;
-		for (int i = 0; i < guildList.size(); i++) {
-			if (guildList.get(i).party == true) {
-				partyList[n] = guildList.get(i);
+		for (int i = 0; i < this.guildList.size(); i++) {
+			if (this.guildList.get(i).getParty() == true) {
+				this.partyList[n] = this.guildList.get(i);
 				n += 1;
 			}
 		}
 	}
 
 	public Unit getGuildUnit(int num) {
-		return guildList.get(num);
+		return this.guildList.get(num);
 	}
 
 	public void printAllUnitStaus() {
@@ -43,24 +43,24 @@ public class Guild {
 		System.out.println("============= [길드원] =================");
 		for (int i = 0; i < guildList.size(); i++) {
 			System.out.print("[" + (i + 1) + "번]");
-			System.out.print(" [이름 : " + guildList.get(i).name + "]");
-			System.out.print(" [레벨 : " + guildList.get(i).level + "]");
-			System.out.print(" [체력 : " + guildList.get(i).hp);
-			System.out.println(" / " + guildList.get(i).maxHp + "]");
-			System.out.print("[공격력 : " + guildList.get(i).att + "]");
-			System.out.print(" [방어력 : " + guildList.get(i).def + "]");
-			System.out.println(" [파티중 : " + guildList.get(i).party + "]");
+			System.out.print(" [이름 : " + guildList.get(i).getName() + "]");
+			System.out.print(" [레벨 : " + guildList.get(i).getLevel()+ "]");
+			System.out.print(" [체력 : " + guildList.get(i).getHp());
+			System.out.println(" / " + guildList.get(i).getMaxHp() + "]");
+			System.out.print("[공격력 : " + guildList.get(i).getAtt() + "]");
+			System.out.print(" [방어력 : " + guildList.get(i).getDef() + "]");
+			System.out.println(" [파티중 : " + guildList.get(i).getParty() + "]");
 			System.out.println("");
 		}
 		System.out.println("=================================");
 	}
 
 	public void printUnitStaus(int num) {
-		guildList.get(num).printStatus();
+		this.guildList.get(num).printStatus();
 	}
 
 	public void printUnitItem(int num) {
-		guildList.get(num).printEquitedItem();
+		this.guildList.get(num).printEquitedItem();
 	}
 
 	public void buyUnit() {
@@ -95,7 +95,7 @@ public class Guild {
 			e.printStackTrace();
 		}
 
-		guildList.add(temp);
+		this.guildList.add(temp);
 		Player.money -= 5000;
 	}
 
@@ -103,14 +103,14 @@ public class Guild {
 		printAllUnitStaus();
 		System.out.println("삭제할 번호를 입력하세요 ");
 		int sel = MainGame.scan.nextInt();
-		if (guildList.get(sel - 1).party) {
+		if (this.guildList.get(sel - 1).getParty()) {
 			System.out.println("파티중인 멤버는 삭제할수 없습니다.");
 		} else {
 			System.out.println("=================================");
-			System.out.print("[이름 : " + guildList.get(sel - 1).name + "]");
+			System.out.print("[이름 : " + this.guildList.get(sel - 1).getName() + "]");
 			System.out.println("길드원을 삭제합니다.");
 			System.out.println("=================================");
-			guildList.remove(sel - 1);
+			this.guildList.remove(sel - 1);
 		}
 		try {
 			Thread.sleep(1000);
@@ -123,13 +123,13 @@ public class Guild {
 		System.out.println("================ [파티원] ===============");
 		for (int i = 0; i < PARTY_SIZE; i++) {
 			System.out.print("[" + (i + 1) + "번]");
-			System.out.print(" [이름 : " + partyList[i].name + "]");
-			System.out.print(" [레벨 : " + partyList[i].level + "]");
-			System.out.print(" [체력 : " + partyList[i].hp);
-			System.out.println(" / " + partyList[i].maxHp + "]");
-			System.out.print("[공격력 : " + partyList[i].att + "]");
-			System.out.print(" [방어력 : " + partyList[i].def + "]");
-			System.out.println(" [파티중 : " + guildList.get(i).party + "]");
+			System.out.print(" [이름 : " + partyList[i].getName() + "]");
+			System.out.print(" [레벨 : " + partyList[i].getLevel() + "]");
+			System.out.print(" [체력 : " + partyList[i].getHp());
+			System.out.println(" / " + partyList[i].getMaxHp() + "]");
+			System.out.print("[공격력 : " + partyList[i].getAtt() + "]");
+			System.out.print(" [방어력 : " + partyList[i].getDef() + "]");
+			System.out.println(" [파티중 : " + guildList.get(i).getParty() + "]");
 			System.out.println("");
 		}
 		System.out.println("=====================================");
@@ -144,20 +144,20 @@ public class Guild {
 		System.out.println("참가할 번호를 입력하세요 ");
 		int guildNum = MainGame.scan.nextInt();
 
-		partyList[partyNum - 1].party = false;
-		guildList.get(guildNum - 1).party = true;
+		this.partyList[partyNum - 1].setParty(false);
+		this.guildList.get(guildNum - 1).setParty(true);
 
 		System.out.println("====================================");
-		System.out.print("[이름 : " + partyList[partyNum - 1].name + "]");
+		System.out.print("[이름 : " + this.partyList[partyNum - 1].getName() + "]");
 		System.out.print("에서 ");
-		System.out.print("[이름 : " + guildList.get(guildNum - 1).name + "]");
+		System.out.print("[이름 : " + this.guildList.get(guildNum - 1).getName() + "]");
 		System.out.println("으로 교체 합니다. ");
 		System.out.println("====================================");
 
 		int n = 0;
-		for (int i = 0; i < guildList.size(); i++) {
-			if (guildList.get(i).party) {
-				partyList[n] = guildList.get(i);
+		for (int i = 0; i < this.guildList.size(); i++) {
+			if (this.guildList.get(i).getParty()) {
+				this.partyList[n] = this.guildList.get(i);
 				n += 1;
 			}
 		}

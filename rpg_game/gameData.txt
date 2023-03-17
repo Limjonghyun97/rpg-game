@@ -1,0 +1,9 @@
+85000
+3
+최석석/1/77/8/4/0/false
+null/null/null
+오광민/1/22/3/2/0/false
+null/null/null
+최기수/1/55/6/3/0/false
+null/null/null
+0

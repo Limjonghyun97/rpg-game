@@ -16,7 +16,7 @@ public class Unit {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -24,11 +24,11 @@ public class Unit {
 	public int getLevel() {
 		return this.level;
 	}
-	
+
 	public int getHp() {
 		return this.hp;
 	}
-	
+
 	public void setHp(int num) {
 		this.hp += num;
 	}
@@ -36,14 +36,15 @@ public class Unit {
 	public int getMaxHp() {
 		return this.maxHp;
 	}
+
 	public void setMaxHp(int num) {
-		this.maxHp = num;
+		this.maxHp += num;
 	}
 
 	public int getAtt() {
 		return this.att;
 	}
-	
+
 	public void setAtt(int num) {
 		this.att += num;
 	}
@@ -51,11 +52,10 @@ public class Unit {
 	public int getDef() {
 		return this.def;
 	}
-	
+
 	public void setDef(int num) {
 		this.def += num;
 	}
-
 
 	public int getExp() {
 		return this.exp;
@@ -64,6 +64,7 @@ public class Unit {
 	public boolean getParty() {
 		return this.party;
 	}
+
 	public void setParty(boolean party) {
 		this.party = party;
 	}
@@ -71,6 +72,7 @@ public class Unit {
 	public Item getWeapon() {
 		return this.weapon;
 	}
+
 	public void setWeapon(Item weapon) {
 		this.weapon = weapon;
 	}
@@ -78,6 +80,7 @@ public class Unit {
 	public Item getArmor() {
 		return this.armor;
 	}
+
 	public void setArmor(Item armor) {
 		this.armor = armor;
 	}
@@ -85,6 +88,7 @@ public class Unit {
 	public Item getRing() {
 		return this.ring;
 	}
+
 	public void setRing(Item ring) {
 		this.ring = ring;
 	}
@@ -127,22 +131,22 @@ public class Unit {
 		System.out.print("[이름 : " + this.name + "]");
 		System.out.print(" [레벨 : " + this.level + "]");
 		if (this.ring != null) {
-			System.out.print(" [체력 : " + this.hp + " + " + this.ring.getPower());
+			System.out.print(" [체력 : " + (this.hp - this.ring.getPower()) + " + " + this.ring.getPower());
 		} else {
 			System.out.print(" [체력 : " + this.hp);
 		}
 		if (this.ring != null) {
-			System.out.println(" / " + this.maxHp + " + " + this.ring.getPower() + "]");
+			System.out.println(" / " + (this.maxHp - this.ring.getPower()) + " + " + this.ring.getPower() + "]");
 		} else {
 			System.out.println(" / " + this.maxHp + "]");
 		}
 		if (this.weapon != null) {
-			System.out.print("[공격력 : " + this.att + " + " + this.weapon.getPower() + "]");
+			System.out.print("[공격력 : " + (this.att - this.weapon.getPower()) + " + " + this.weapon.getPower() + "]");
 		} else {
 			System.out.print("[공격력 : " + this.att + "]");
 		}
 		if (this.armor != null) {
-			System.out.print(" [방어력 : " + this.def + " + " + this.armor.getPower() + "]");
+			System.out.print(" [방어력 : " + (this.def - this.armor.getPower()) + " + " + this.armor.getPower() + "]");
 		} else {
 			System.out.print(" [방어력 : " + this.def + "]");
 		}

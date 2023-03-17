@@ -16,6 +16,10 @@ public class Unit {
 	public String getName() {
 		return this.name;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public int getLevel() {
 		return this.level;
@@ -24,18 +28,34 @@ public class Unit {
 	public int getHp() {
 		return this.hp;
 	}
+	
+	public void setHp(int num) {
+		this.hp += num;
+	}
 
 	public int getMaxHp() {
 		return this.maxHp;
+	}
+	public void setMaxHp(int num) {
+		this.maxHp = num;
 	}
 
 	public int getAtt() {
 		return this.att;
 	}
+	
+	public void setAtt(int num) {
+		this.att += num;
+	}
 
 	public int getDef() {
 		return this.def;
 	}
+	
+	public void setDef(int num) {
+		this.def += num;
+	}
+
 
 	public int getExp() {
 		return this.exp;

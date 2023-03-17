@@ -32,21 +32,25 @@ public class Inventory {
 			if (selEquip == 0)
 				break;
 			selEquip -= 1;
+			Unit unit = Player.getGuildUnit(selUnit - 1);
 			if (itemList.get(selEquip).getKind() == Item.WEAPON) {
-				if (Player.getGuildUnit(selUnit - 1).getWeapon() != null) {
-					itemList.add(Player.getGuildUnit(selUnit - 1).getWeapon());
+				if (unit.getWeapon() != null) {
+					itemList.add(unit.getWeapon());
 				}
-				Player.getGuildUnit(selUnit - 1).setWeapon(itemList.get(selEquip));
+				unit.setWeapon(itemList.get(selEquip));
+				unit.setAtt(itemList.get(selEquip).getPower());
 			} else if (itemList.get(selEquip).getKind() == Item.ARMOR) {
 				if (Player.getGuildUnit(selUnit - 1).getArmor() != null) {
-					itemList.add(Player.getGuildUnit(selUnit - 1).getArmor());
+					itemList.add(unit.getArmor());
 				}
-				Player.getGuildUnit(selUnit - 1).setArmor(itemList.get(selEquip));
+				unit.setArmor(itemList.get(selEquip));
+				unit.setDef(itemList.get(selEquip).getPower());
 			} else if (itemList.get(selEquip).getKind() == Item.RING) {
-				if (Player.getGuildUnit(selUnit - 1).getRing() != null) {
-					itemList.add(Player.getGuildUnit(selUnit - 1).getRing());
+				if (unit.getRing() != null) {
+					itemList.add(unit.getRing());
 				}
-				Player.getGuildUnit(selUnit - 1).setRing(itemList.get(selEquip));
+				unit.setRing(itemList.get(selEquip));
+				unit.setHp(itemList.get(selEquip).getPower());
 			}
 			itemList.remove(selEquip);
 		}
